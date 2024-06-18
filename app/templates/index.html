@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Processing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+    <style>
+                .content-wrapper {
+            margin: 100px; /* Change the value to suit your needs */
+        }
+        .styled-form {
+            margin-top: 20px;
+        }
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 20px;
+}
+
+.grid-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.grid-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.grid-item p {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    <h1 style='text-align: center'>Object detection</h1>
+    <div class="content-wrapper">
+        <div class="grid-container">
+            <!-- 1_Auto Privado -->
+            <div class="grid-item">
+                <img src="../static/car.jpeg" alt="1_Auto Privado">
+                <p>1_Auto Privado</p>
+            </div>
+            
+            <!-- 13_Bus -->
+            <div class="grid-item">
+                <img src="../static/bus.jpeg" alt="13_Bus">
+                <p>13_Bus</p>
+            </div>
+            
+            <!-- 11_Camioneta rural -->
+            <div class="grid-item">
+                <img src="../static/camioneta_rural.jpeg" alt="11_Camioneta rural">
+                <p>11_Camioneta rural</p>
+            </div>
+            
+            <!-- 12_Microbus -->
+            <div class="grid-item">
+                <img src="../static/microbus.jpeg" alt="12_Microbus">
+                <p>12_Microbus</p>
+            </div>
+            
+            <!-- 4_Mototaxi -->
+            <div class="grid-item">
+                <img src="../static/mototaxi.jpeg" alt="4_Mototaxi">
+                <p>4_Mototaxi</p>
+            </div>
+            
+            <!-- 5_Moto lineal -->
+            <div class="grid-item">
+                <img src="../static/moto_lineal.jpeg" alt="5_Moto lineal">
+                <p>5_Moto lineal</p>
+            </div>
+            
+            <!-- 9_Omnibus Interprovincial -->
+            <div class="grid-item">
+                <img src="../static/omnibus_interprovincial.jpeg" alt="9_Omnibus Interprovincial">
+                <p>9_Omnibus Interprovincial</p>
+            </div>
+            
+            <!-- 10_Auto colectivo -->
+            <div class="grid-item">
+                <img src="../static/auto_colectivo.jpeg" alt="10_Auto colectivo">
+                <p>10_Auto colectivo</p>
+            </div>
+            
+            <!-- 14_Articulado -->
+            <div class="grid-item">
+                <img src="../static/articulado.jpeg" alt="14_Articulado">
+                <p>14_Articulado</p>
+            </div>
+            
+            <!-- 2_Cam. PickUp -->
+            <div class="grid-item">
+                <img src="../static/camioneta_pickup.jpeg" alt="2_Cam. PickUp">
+                <p>2_Cam. PickUp</p>
+            </div>
+            
+            <!-- 3_Taxi -->
+            <div class="grid-item">
+                <img src="../static/taxi.jpeg" alt="3_Taxi">
+                <p>3_Taxi</p>
+            </div>
+            
+            <!-- 6_Bicicletas -->
+            <div class="grid-item">
+                <img src="../static/bicicletas.jpeg" alt="6_Bicicletas">
+                <p>6_Bicicletas</p>
+            </div>
+            
+            <!-- 7_Scooter -->
+            <div class="grid-item">
+                <img src="../static/scooter.jpeg" alt="7_Scooter">
+                <p>7_Scooter</p>
+            </div>
+            
+            <!-- 8_TransportenEscolar Personal -->
+            <div class="grid-item">
+                <img src="../static/transporte_escolar.jpeg" alt="8_TransportenEscolar Personal">
+                <p>8_TransportenEscolar Personal</p>
+            </div>
+            
+            <!-- 15_TC_Ligeros -->
+            <div class="grid-item">
+                <img src="../static/tc_ligeros.jpeg" alt="15_TC_Ligeros">
+                <p>15_TC_Ligeros</p>
+            </div>
+            
+            <!-- 16_TC Pesados -->
+            <div class="grid-item">
+                <img src="../static/tc_pesados.jpeg" alt="16_TC Pesados">
+                <p>16_TC Pesados</p>
+            </div>
+            
+            <!-- 17_TC SemiTrailler Trailer -->
+            <div class="grid-item">
+                <img src="../static/tc_semitrailer.jpeg" alt="17_TC SemiTrailler Trailer">
+                <p>17_TC SemiTrailler Trailer</p>
+            </div>
+            
+            <!-- 18_Triciclo -->
+            <div class="grid-item">
+                <img src="../static/triciclo.jpeg" alt="18_Triciclo">
+                <p>18_Triciclo</p>
+            </div>
+            
+            <!-- 19_Ambulancia -->
+            <div class="grid-item">
+                <img src="../static/ambulancia.jpeg" alt="19_Ambulancia">
+                <p>19_Ambulancia</p>
+            </div>
+        </div>
+        
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="video_source">Choose video source:</label>
+            <select id="video_source" name="video_source" onchange="toggleVideoSource(this.value)">
+                <option value="-1">Source</option>
+                <option value="0">Live Camera</option>
+                <option value="1">Video File</option>
+            </select>
+            <br><br>
+            <div id="file_input" style="display: none;">
+                <label for="file">Upload Video File:</label>
+                <input type="file" id="file" name="file">
+                <br><br>
+            </div>
+            <label for="save_video">Save Processed Video:</label>
+            <input type="checkbox" id="save_video" name="save_video" value="1">
+            <br><br>
+            <button type="submit">Start</button>
+        </form>
+    </div>
+    <!-- Placeholder for video stream using iframe -->
+    <div id="video_container">
+   </div>
+    
+    <script>
+        function toggleVideoSource(value) {
+            const fileInput = document.getElementById('file_input');
+            const videoContainer = document.getElementById('video_container');
+            if (value == "1") {
+                fileInput.style.display = 'block';
+                videoContainer.style.display = 'none';
+            } else {
+                fileInput.style.display = 'none';
+                videoContainer.style.display = 'block';
+            }
+        }
+        async function startVideo() {
+        const form = document.getElementById('upload-form');
+        const formData = new FormData(form);
+        const videoSource = document.getElementById('video_source').value;
+        const saveVideo = document.getElementById('save_video').checked ? 1 : 0;
+
+        try {
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const responseData = await response.json(); // Assuming server returns JSON with video URL
+                const videoUrl = responseData.video_url; // Adjust according to actual response structure
+
+                // Update video feed
+                const videoElement = document.getElementById('video_feed');
+                videoElement.src = videoUrl;
+
+                // Show video feed container
+                document.getElementById('video_feed_container').style.display = 'block';
+            } else {
+                console.error('Failed to start video:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error starting video:', error);
+        }
+    }
+    </script>
+</body>
+</html>
