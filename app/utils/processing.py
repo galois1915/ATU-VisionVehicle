@@ -1,3 +1,4 @@
+import cv2
 color_map = {
     1: (255, 0, 0),        # Red
     13: (0, 255, 0),       # Green
@@ -52,5 +53,5 @@ def draw_boxes(image, boxes):
         y2 = int(y + h / 2)
         color = color_map.get(int(cls), (0, 255, 255))  # Default to yellow if class not in color_map
         cv2.rectangle(image, (x1, y1), (x2, y2), color, 2)
-        label = f'{clasess.get(int(cls), "desconocido")}, {conf:.2f}'
+        label = f'{clasess.get(int(cls)+1, "desconocido")}, {conf:.2f}'
         cv2.putText(image, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)

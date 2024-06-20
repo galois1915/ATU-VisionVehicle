@@ -6,14 +6,14 @@ import sys
 sys.path.append(os.path.abspath('../repos/yolov7'))
 sys.path.append(os.path.abspath('./utils'))
 from hubconf import custom
-from preprocesing import color_map, clasess, draw_boxes     
+from processing import color_map, clasess, draw_boxes     
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # Load model
-model = custom(path_or_model='./models/best.pt')
+model = custom(path_or_model='./models/best_yolov7.pt')
 
 def model_infer(img):
     results = model(img)
@@ -21,21 +21,21 @@ def model_infer(img):
     draw_boxes(img, xywh)
     return img
 
-# Upload route
+@app.route('/')
+def index():
+    return render_template('index.html', video_path=None)
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
         return redirect(request.url)
-    
     file = request.files['file']
     if file.filename == '':
         return redirect(request.url)
-    
     if file:
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filepath)
-        # Return parameters to dynamically load video feed in the same tab
-        return f'video_source={filepath}&save_video={int(request.form.get("save_video", 0))}&batch_size={int(request.form.get("batch_size", 1))}'
+        return redirect(url_for('video_feed', video_source=filepath, save_video=request.form.get('save_video'), batch_size=request.form.get('batch_size')))
 
 def gen_frames(video_source, save_video, batch_size):
     cap = cv2.VideoCapture(video_source)
