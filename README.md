@@ -1,7 +1,7 @@
 ```
 VehicleVisionCounter/
 │
-├── app/                        # Main application directory
+├── app_flask/                        # Main application directory
 │   ├── __init__.py             # Initializes the Flask app
 │   ├── main.py                 # Entry point for the Flask app
 │   ├── models/                 # Directory for machine learning models

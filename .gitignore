@@ -1,5 +1,6 @@
 data
 .env7
 .env9
+.venv
 app/uploads
 repos
