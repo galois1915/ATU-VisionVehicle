@@ -10,10 +10,11 @@ os.environ['QT_QPA_PLATFORM'] = 'xcb'
 # load model
 model = YOLO("./data/models/best.pt")
 region_points = [(400, 250), (450, 320), (1250, 280), (1000, 220)]
+line_points = [[450, 350], [1250, 280]]
 # Init Object Counter
 counter = solutions.ObjectCounter(
     view_img=False,
-    reg_pts=region_points,
+    reg_pts=line_points,
     classes_names=model.names,
     draw_tracks=True,
     line_thickness=2,
